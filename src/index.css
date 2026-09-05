@@ -1,0 +1,14 @@
+@import "tailwindcss";
+@theme {
+  /* Colors */
+  --color-brand-bg: #0A0A0A;
+  --color-brand-surface: #141414;
+  --color-brand-border: #262626;
+  --color-brand-primary: #FF003C;
+  --color-brand-accent: #00F0FF;
+  --color-brand-muted: #A1A1AA;
+
+  /* Fonts */
+  --font-display: 'Orbitron', sans-serif;
+  --font-body: 'Plus Jakarta Sans', sans-serif;
+}
