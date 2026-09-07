@@ -1,0 +1,150 @@
+[
+  {
+    "id": 1,
+    "name": "BLUE FLAME TEE",
+    "productDetail": "The blue flame rises in darkness, cold, silent, unstoppable.240gsm heavyweight cotton.Oversized fit Garment washed.Anime graphic screenprint.",
+    "colorway": "STEEL BLUE",
+    "price": 33.99,
+    "originalPrice": 39.99,
+    "category": "Sale",
+    "image": "https://i.ibb.co.com/CKRzbQzh/Water-breathing-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "BUSHIDO TEE",
+    "productDetail": "Discipline forged in silence. Every stitch a vow. 240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "SAND/EARTH",
+    "price": 39.99,
+    "originalPrice": null,
+    "category": "Best Seller",
+    "image": "https://i.ibb.co.com/HLm9wxrV/Bushido-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "DEMON BLOOD TEE",
+    "productDetail": "The mark of the cursed. Worn by those who survived.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "CRIMSON PINK",
+    "price": 33.99,
+    "originalPrice": 39.99,
+    "category": "Sale",
+    "image": "https://i.ibb.co.com/JW0QfHsj/Demon-blood-4.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "DOMAIN EXPANSION TEE",
+    "productDetail": "Infinite territory. The world bends to your technique.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "VOID PURPLE",
+    "price": 39.99,
+    "originalPrice": null,
+    "category": "Best Seller",
+    "image": "https://i.ibb.co.com/vxSDR67h/Domain-expansion-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "FREE SOUL TEE",
+    "productDetail": "No cage built can hold what was never meant to  be contained.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "ASH WHITE",
+    "price": 39.99,
+    "originalPrice": null,
+    "category": "Limited Stock",
+    "image": "https://i.ibb.co.com/N6RHhgz1/Free-soul-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "LIMITLESS TEE",
+    "productDetail": "The technique with no boundary. The mind with no limit.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "SHADOW OLIVE",
+    "price": 39.99,
+    "originalPrice": null,
+    "category": "Limited Stock",
+    "image": "https://i.ibb.co.com/8gPLCGBn/Limitless-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "PARADISE SPIRIT TEE",
+    "productDetail": "Still water. Deadly current. The paradise hides the storm.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "Sage Olive",
+    "price": 39.99,
+    "originalPrice":null,
+    "category": "Best Seller",
+    "image": "https://i.ibb.co.com/wZZZ09Vf/Paradise-spirit-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "WARRIOR SPIRIT TEE",
+    "productDetail": "Beaten but unbroken. The warrior spirit outlasts everything.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "Forest Green",
+    "price": 33.99,
+    "originalPrice": 39.99,
+    "category": "Sale",
+    "image": "https://i.ibb.co.com/9kX9d7fy/Warrior-spirit-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1618354691373-d851c5c3a990?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "WATER BREATHING TEE",
+    "productDetail": "The technique born from the ocean. Fluid, relentless, precise.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "Ocean Teal",
+    "price": 39.99,
+    "originalPrice": null,
+    "category": "New Arrival",
+    "image": "https://i.ibb.co.com/CKRzbQzh/Water-breathing-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1576995853123-5a10305d93c0?w=800&auto=format&fit=crop"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "WILL OF THE SUN TEE",
+    "productDetail": "Blazing spirit. Unbreakable resolve. The will that outlasts everything.240gsm heavyweight cotton.Oversized fit. Garment washed.Anime graphic screenprint.",
+    "colorway": "Solar Gold",
+    "price": 33.99,
+    "originalPrice":39.99,
+    "category": "Sale",
+    "image": "https://i.ibb.co.com/LXjxR7sq/Will-of-the-sun-5.avif",
+    "gallery": [
+      "https://images.unsplash.com/photo-1529374255404-311a2a4f1fd9?w=800&auto=format&fit=crop",
+      "https://images.unsplash.com/photo-1583743814966-8936f5b7be1a?w=800&auto=format&fit=crop"
+    ]
+  }
+]
