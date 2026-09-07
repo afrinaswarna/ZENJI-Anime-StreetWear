@@ -5,12 +5,12 @@ const BigSale = () => {
   const [saleProducts, setSaleProducts] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // ৪টি ইমেজের জন্য ৪টি দিক নির্দেশকারী CSS ট্রান্সফর্ম ক্লাস
+  // 4টি ইমেজের জন্য ৪টি দিক নির্দেশকারী CSS ট্রান্সফর্ম ক্লাস (Mobile friendly smaller translation)
   const directions = [
-    "-translate-x-12 -translate-y-12", // Top-Left
-    "translate-x-12 -translate-y-12",  // Top-Right
-    "-translate-x-12 translate-y-12",  // Bottom-Left
-    "translate-x-12 translate-y-12",   // Bottom-Right
+    "-translate-x-4 -translate-y-4 sm:-translate-x-12 sm:-translate-y-12", // Top-Left
+    "translate-x-4 -translate-y-4 sm:translate-x-12 sm:-translate-y-12",   // Top-Right
+    "-translate-x-4 translate-y-4 sm:-translate-x-12 sm:translate-y-12",   // Bottom-Left
+    "translate-x-4 translate-y-4 sm:translate-x-12 sm:translate-y-12",     // Bottom-Right
   ];
 
   useEffect(() => {
@@ -25,7 +25,7 @@ const BigSale = () => {
             item.discount
         );
 
-        // ফিল্টার করা ডাটা থেকে সর্বোচ্চ ৪টি প্রোডাক্ট নেওয়া
+        // ফিল্টার করা ডাটা থেকে সর্বোচ্চ ৪টি প্রোডাক্ট নেওয়া
         const finalProducts =
           filteredSale.length > 0
             ? filteredSale.slice(0, 4)
@@ -84,7 +84,8 @@ const BigSale = () => {
               Loading Sale Drops...
             </div>
           ) : (
-            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:max-w-none">
+            /* Responsive Gap: gap-2 for small devices, gap-4 on sm, gap-6 on lg */
+            <div className="grid grid-cols-2 gap-2 sm:gap-4 lg:gap-6 max-w-lg mx-auto lg:max-w-none">
               {saleProducts.map((product) => (
                 <div
                   key={product.id}
@@ -98,17 +99,17 @@ const BigSale = () => {
                   />
 
                   {/* Top Discount Badge & Name Overlay */}
-                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between gap-2 z-10">
-                    <span className="bg-black/80 px-2 py-0.5 text-[10px] font-mono text-red-500 font-bold border border-red-500/30 rounded">
+                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between gap-1 z-10">
+                    <span className="bg-black/80 px-1.5 py-0.5 text-[9px] sm:text-[10px] font-mono text-red-500 font-bold border border-red-500/30 rounded">
                       {product.discount ? `-${product.discount}%` : "-15%"}
                     </span>
-                    <span className="bg-black/70 backdrop-blur-md px-2 py-0.5 text-[10px] font-display font-semibold text-zinc-200 rounded truncate max-w-[120px]">
+                    <span className="bg-black/70 backdrop-blur-md px-1.5 py-0.5 text-[9px] sm:text-[10px] font-display font-semibold text-zinc-200 rounded truncate max-w-[80px] sm:max-w-[120px]">
                       {product.name}
                     </span>
                   </div>
 
                   {/* Hover Overlay with View Details Link */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 z-20">
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-2 sm:p-3 z-20">
                     <p className="font-display text-xs font-bold text-white mb-1 truncate">
                       {product.name}
                     </p>
@@ -116,18 +117,18 @@ const BigSale = () => {
                     {/* Price Display */}
                     <div className="flex items-center gap-2 mb-2 font-mono text-xs">
                       {product.originalPrice && (
-                        <span className="text-zinc-500 line-through">
+                        <span className="text-zinc-500 line-through text-[10px] sm:text-xs">
                           A${product.originalPrice}
                         </span>
                       )}
-                      <span className="font-bold text-white">
+                      <span className="font-bold text-white text-[11px] sm:text-xs">
                         A${product.price?.toFixed(2)}
                       </span>
                     </div>
 
                     <Link
                       to={`/product/${product.id}`}
-                      className="w-full bg-white text-black py-2 rounded font-display text-[11px] font-bold uppercase tracking-wider text-center hover:bg-brand-primary hover:text-white transition-colors shadow-md"
+                      className="w-full bg-white text-black py-1.5 sm:py-2 rounded font-display text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-center hover:bg-brand-primary hover:text-white transition-colors shadow-md"
                     >
                       View Details
                     </Link>

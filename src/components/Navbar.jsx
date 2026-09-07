@@ -5,6 +5,7 @@ import { useCart } from "../context/CartContext"; // Adjust path if necessary
 const Navbar = () => {
   const [isCartOpen, setIsCartOpen] = useState(false);
   const [isWishlistOpen, setIsWishlistOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const {
     cartItems,
@@ -23,7 +24,6 @@ const Navbar = () => {
     { name: "SHOP ALL", path: "/shop-all" },
     { name: "NEW DROPS", path: "/new-drops" },
     { name: "About Us", path: "/about-us" },
-  
     { name: "REVIEWS", path: "/reviews" },
   ];
 
@@ -54,8 +54,8 @@ const Navbar = () => {
               ))}
             </div>
 
-            {/* Header Action Icons */}
-            <div className="flex items-center space-x-5">
+            {/* Header Action Icons & Mobile Hamburger */}
+            <div className="flex items-center space-x-4 sm:space-x-5">
               {/* Wishlist Trigger */}
               <button
                 type="button"
@@ -89,9 +89,49 @@ const Navbar = () => {
                   </span>
                 )}
               </button>
+
+              {/* Mobile Menu Hamburger Trigger */}
+              <button
+                type="button"
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="lg:hidden text-zinc-300 hover:text-white p-1 focus:outline-none"
+                aria-label="Toggle Mobile Navigation"
+              >
+                {isMobileMenuOpen ? (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                ) : (
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+                  </svg>
+                )}
+              </button>
             </div>
           </div>
         </div>
+
+        {/* ---------------- MOBILE MENU DROPDOWN ---------------- */}
+        {isMobileMenuOpen && (
+          <div className="lg:hidden bg-zinc-950 border-b border-zinc-800 transition-all duration-300">
+            <div className="px-4 pt-2 pb-6 space-y-3">
+              {navLinks.map((link) => (
+                <NavLink
+                  key={link.name}
+                  to={link.path}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={({ isActive }) =>
+                    `block font-display text-sm font-semibold tracking-wider py-2 transition-colors ${
+                      isActive ? "text-brand-primary" : "text-zinc-300 hover:text-white"
+                    }`
+                  }
+                >
+                  {link.name}
+                </NavLink>
+              ))}
+            </div>
+          </div>
+        )}
       </nav>
 
       {/* ---------------- CART DRAWER ---------------- */}
@@ -143,7 +183,7 @@ const Navbar = () => {
                     <span className="font-bold text-white">A${cartTotal.toFixed(2)}</span>
                   </div>
                   <Link
-                    
+                    to="/checkout"
                     onClick={() => setIsCartOpen(false)}
                     className="block w-full py-3 bg-white text-black text-center font-display text-xs font-bold uppercase tracking-widest hover:bg-emerald-500 hover:text-white transition-colors rounded"
                   >
