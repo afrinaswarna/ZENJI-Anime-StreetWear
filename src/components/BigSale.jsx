@@ -1,36 +1,53 @@
-import React from 'react';
-import { Link } from 'react-router';
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router";
 
 const BigSale = () => {
-  const saleImages = [
-    {
-      id: 1,
-      url: "https://i.ibb.co.com/LXjxR7sq/Will-of-the-sun-5.avif",
-      direction: "-translate-x-12 -translate-y-12", // Top-Left
-      alt: "Sale Tee 1"
-    },
-    {
-      id: 2,
-      url: "https://i.ibb.co.com/6cpbmzQX/Blue-flame-4.avif",
-      direction: "translate-x-12 -translate-y-12",  // Top-Right
-      alt: "Sale Tee 2"
-    },
-    {
-      id: 3,
-      url: "https://i.ibb.co.com/JW0QfHsj/Demon-blood-4.avif",
-      direction: "-translate-x-12 translate-y-12",  // Bottom-Left
-      alt: "Sale Tee 3"
-    },
-    {
-      id: 4,
-      url: "https://i.ibb.co.com/9kX9d7fy/Warrior-spirit-5.avif",
-      direction: "translate-x-12 translate-y-12",   // Bottom-Right
-      alt: "Sale Tee 4"
-    }
+  const [saleProducts, setSaleProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  // ৪টি ইমেজের জন্য ৪টি দিক নির্দেশকারী CSS ট্রান্সফর্ম ক্লাস
+  const directions = [
+    "-translate-x-12 -translate-y-12", // Top-Left
+    "translate-x-12 -translate-y-12",  // Top-Right
+    "-translate-x-12 translate-y-12",  // Bottom-Left
+    "translate-x-12 translate-y-12",   // Bottom-Right
   ];
 
+  useEffect(() => {
+    fetch("/data.json")
+      .then((res) => res.json())
+      .then((data) => {
+        // "Sale" ক্যাটাগরি অথবা originalPrice / discount থাকা প্রোডাক্ট ফিল্টার
+        const filteredSale = data.filter(
+          (item) =>
+            item.category?.toLowerCase() === "sale" ||
+            item.originalPrice ||
+            item.discount
+        );
+
+        // ফিল্টার করা ডাটা থেকে সর্বোচ্চ ৪টি প্রোডাক্ট নেওয়া
+        const finalProducts =
+          filteredSale.length > 0
+            ? filteredSale.slice(0, 4)
+            : data.slice(0, 4);
+
+        // প্রতিটি প্রোডাক্টের সাথে ৪টি ডিরেকশন ম্যাপ করা
+        const mappedProducts = finalProducts.map((product, index) => ({
+          ...product,
+          direction: directions[index % 4],
+        }));
+
+        setSaleProducts(mappedProducts);
+        setLoading(false);
+      })
+      .catch((err) => {
+        console.error("Error fetching sale products:", err);
+        setLoading(false);
+      });
+  }, []);
+
   return (
-    <section className=" text-brand-bg py-20 px-4 sm:px-6 lg:px-8 border-b border-brand-border overflow-hidden">
+    <section className="text-brand-bg py-20 px-4 sm:px-6 lg:px-8 border-b border-brand-border overflow-hidden">
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
         
         {/* Left Side: Text Content */}
@@ -52,33 +69,73 @@ const BigSale = () => {
 
           <div className="pt-2">
             <Link
-              to="/category/sale"
-              className="inline-block bg-white text-black hover:bg-brand-primary hover:text-white font-display text-xs font-bold uppercase tracking-widest px-10 py-4 transition-all duration-300 border border-white hover:border-brand-primary"
+              to="/shop-all"
+              className="inline-block bg-white text-black hover:bg-brand-primary hover:text-white font-display text-xs font-bold uppercase tracking-widest px-10 py-4 transition-all duration-300 border border-white hover:border-brand-primary shadow-lg"
             >
               SHOP THE SALE ↗
             </Link>
           </div>
         </div>
 
-        {/* Right Side: 4 Images Coming From 4 Directions Animation */}
+        {/* Right Side: 4 Products Dynamic Display with Animation */}
         <div className="lg:col-span-7 group">
-          <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:max-w-none">
-            {saleImages.map((img) => (
-              <div
-                key={img.id}
-                className={`relative aspect-[3/4] overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-700 ease-out transform ${img.direction} group-hover:translate-x-0 group-hover:translate-y-0 opacity-85 group-hover:opacity-100 group-hover:border-zinc-500`}
-              >
-                <img
-                  src={img.url}
-                  alt={img.alt}
-                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
-                />
-                <div className="absolute top-2 left-2 bg-black/80 px-2 py-0.5 text-[10px] font-mono text-red-500 font-bold border border-red-500/30">
-                  -15%
+          {loading ? (
+            <div className="h-80 flex items-center justify-center font-mono text-xs text-zinc-500">
+              Loading Sale Drops...
+            </div>
+          ) : (
+            <div className="grid grid-cols-2 gap-4 max-w-lg mx-auto lg:max-w-none">
+              {saleProducts.map((product) => (
+                <div
+                  key={product.id}
+                  className={`relative aspect-[3/4] rounded-lg overflow-hidden bg-zinc-900 border border-zinc-800 transition-all duration-700 ease-out transform ${product.direction} group-hover:translate-x-0 group-hover:translate-y-0 opacity-85 group-hover:opacity-100 group-hover:border-zinc-500 hover:shadow-2xl`}
+                >
+                  {/* Product Image */}
+                  <img
+                    src={product.image}
+                    alt={product.name}
+                    className="w-full h-full object-cover object-top group-hover:scale-105 transition-transform duration-500"
+                  />
+
+                  {/* Top Discount Badge & Name Overlay */}
+                  <div className="absolute top-2 left-2 right-2 flex items-center justify-between gap-2 z-10">
+                    <span className="bg-black/80 px-2 py-0.5 text-[10px] font-mono text-red-500 font-bold border border-red-500/30 rounded">
+                      {product.discount ? `-${product.discount}%` : "-15%"}
+                    </span>
+                    <span className="bg-black/70 backdrop-blur-md px-2 py-0.5 text-[10px] font-display font-semibold text-zinc-200 rounded truncate max-w-[120px]">
+                      {product.name}
+                    </span>
+                  </div>
+
+                  {/* Hover Overlay with View Details Link */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-3 z-20">
+                    <p className="font-display text-xs font-bold text-white mb-1 truncate">
+                      {product.name}
+                    </p>
+                    
+                    {/* Price Display */}
+                    <div className="flex items-center gap-2 mb-2 font-mono text-xs">
+                      {product.originalPrice && (
+                        <span className="text-zinc-500 line-through">
+                          A${product.originalPrice}
+                        </span>
+                      )}
+                      <span className="font-bold text-white">
+                        A${product.price?.toFixed(2)}
+                      </span>
+                    </div>
+
+                    <Link
+                      to={`/product/${product.id}`}
+                      className="w-full bg-white text-black py-2 rounded font-display text-[11px] font-bold uppercase tracking-wider text-center hover:bg-brand-primary hover:text-white transition-colors shadow-md"
+                    >
+                      View Details
+                    </Link>
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          )}
         </div>
 
       </div>
